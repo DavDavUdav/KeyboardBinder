@@ -31,21 +31,21 @@ LRESULT CALLBACK LLKeyboardHook(int nCode, WPARAM wParam, LPARAM lParam)
 			return 1;
 		}
 	}
-	// Null тк автоматически берется текущий хук.
+	// Null С‚Рє Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Р±РµСЂРµС‚СЃСЏ С‚РµРєСѓС‰РёР№ С…СѓРє.
 	return CallNextHookEx(NULL, nCode, wParam, lParam);
 }
 
 /// <summary>
 /// https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-winmain
 /// </summary>
-/// <param name="hInstance"> - Дескриптор текущего приложения. </param>
-/// <param name="hPrevInstance"> - Дескриптор предыдущего экземпляра приложения. </param>
-/// <param name="lpCmdLine"> - Аргументы командной строки без приложения. </param>
-/// <param name="nShowCmd"> - Управление отображением окна. </param>
+/// <param name="hInstance"> - Р”РµСЃРєСЂРёРїС‚РѕСЂ С‚РµРєСѓС‰РµРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. </param>
+/// <param name="hPrevInstance"> - Р”РµСЃРєСЂРёРїС‚РѕСЂ РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЌРєР·РµРјРїР»СЏСЂР° РїСЂРёР»РѕР¶РµРЅРёСЏ. </param>
+/// <param name="lpCmdLine"> - РђСЂРіСѓРјРµРЅС‚С‹ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё Р±РµР· РїСЂРёР»РѕР¶РµРЅРёСЏ. </param>
+/// <param name="nShowCmd"> - РЈРїСЂР°РІР»РµРЅРёРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµРј РѕРєРЅР°. </param>
 /// <returns></returns>
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
-	// Указываем тип хука, куда передаем управление хуком, указываем инстанс приложения чтобы система знала кто ставит хук, и NULL для установки хука глобально.
+	// РЈРєР°Р·С‹РІР°РµРј С‚РёРї С…СѓРєР°, РєСѓРґР° РїРµСЂРµРґР°РµРј СѓРїСЂР°РІР»РµРЅРёРµ С…СѓРєРѕРј, СѓРєР°Р·С‹РІР°РµРј РёРЅСЃС‚Р°РЅСЃ РїСЂРёР»РѕР¶РµРЅРёСЏ С‡С‚РѕР±С‹ СЃРёСЃС‚РµРјР° Р·РЅР°Р»Р° РєС‚Рѕ СЃС‚Р°РІРёС‚ С…СѓРє, Рё NULL РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё С…СѓРєР° РіР»РѕР±Р°Р»СЊРЅРѕ.
 	KeyboardHook = SetWindowsHookExW(WH_KEYBOARD_LL, LLKeyboardHook, hInstance, NULL);
 
 	MSG message;
